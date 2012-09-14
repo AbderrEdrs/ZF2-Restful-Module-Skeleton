@@ -12,6 +12,7 @@ return array(
 			'alias' => array(
 				'json-pp'  => 'Main\PostProcessor\Json',
 				'image-pp' => 'Main\PostProcessor\Image',
+				'xml-pp' => 'Main\PostProcessor\Xml',
 			)
 		)
 	),
@@ -22,17 +23,29 @@ return array(
 	),
 	'router' => array(
 		'routes' => array(
-			'restful' => array(
-				'type'    => 'Zend\Mvc\Router\Http\Segment',
-				'options' => array(
-					'route'       => '/:controller[.:formatter][/:id]',
-					'constraints' => array(
-						'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-						'formatter'  => '[a-zA-Z][a-zA-Z0-9_-]*',
-						'id'         => '[a-zA-Z0-9_-]*'
-					),
-				),
-			),
+            'restful' => array(
+                'type'    => 'Zend\Mvc\Router\Http\Segment',
+                'options' => array(
+                    'route'    => '/rest[/:formatter]',
+                    'constraints' => array(
+                        'formatter' => '[a-zA-Z0-9_-]*',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'default' => array(
+                        'type'    => 'Zend\Mvc\Router\Http\Segment',
+                        'options' => array(
+                            'route'    => '/[:controller[/:id]]',
+                            'constraints' => array(
+                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                                'id' => '[a-zA-Z0-9_-]*'
+                            ),
+                        ),
+                    ),
+                ),
+            ),
+
 		),
 	),
 );
