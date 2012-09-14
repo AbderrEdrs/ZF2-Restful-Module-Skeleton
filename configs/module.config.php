@@ -1,28 +1,28 @@
 <?php
 return array(
-	'errors' => array(
-		'post_processor' => 'json-pp',
-		'show_exceptions' => array(
-			'message' => true,
-			'trace'   => true
-		)
-	),
-	'di' => array(
-		'instance' => array(
-			'alias' => array(
-				'json-pp'  => 'Main\PostProcessor\Json',
-				'image-pp' => 'Main\PostProcessor\Image',
-				'xml-pp' => 'Main\PostProcessor\Xml',
-			)
-		)
-	),
-	'controllers' => array(
-		'invokables' => array(
-			'info' => 'Main\Controller\InfoController',
-		)
-	),
-	'router' => array(
-		'routes' => array(
+    'errors' => array(
+    	'post_processor' => 'json-pp',
+    	'show_exceptions' => array(
+    		'message' => true,
+    		'trace'   => true
+    	)
+    ),
+    'di' => array(
+    	'instance' => array(
+    		'alias' => array(
+    			'json-pp'  => 'Main\PostProcessor\Json',
+    			'image-pp' => 'Main\PostProcessor\Image',
+    			'xml-pp' => 'Main\PostProcessor\Xml',
+    		)
+    	)
+    ),
+    'controllers' => array(
+    	'invokables' => array(
+    		'info' => 'Main\Controller\InfoController',
+    	)
+    ),
+    'router' => array(
+    	'routes' => array(
             'restful' => array(
                 'type'    => 'Zend\Mvc\Router\Http\Segment',
                 'options' => array(
@@ -46,6 +46,6 @@ return array(
                 ),
             ),
 
-		),
-	),
+    	),
+    ),
 );
