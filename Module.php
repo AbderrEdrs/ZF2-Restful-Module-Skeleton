@@ -19,11 +19,26 @@ class Module
         /** @var \Zend\EventManager\SharedEventManager $sharedEvents */
         $sharedEvents = $moduleManager->getEventManager()->getSharedManager();
 
-        $sharedEvents->attach('Zend\Mvc\Controller\AbstractRestfulController', MvcEvent::EVENT_DISPATCH, array($this, 'postProcess'), -100);
-        
-        $sharedEvents->attach('Main\Controller\InfoController', MvcEvent::EVENT_DISPATCH, array($e->getApplication()->getServiceManager()->get('Main\Http\Restful'), 'onDispatch'), 100);
-        
-        $sharedEvents->attach('Zend\Mvc\Application', MvcEvent::EVENT_DISPATCH_ERROR, array($this, 'errorProcess'), 999);
+        $sharedEvents->attach(
+            'Zend\Mvc\Controller\AbstractRestfulController',
+            MvcEvent::EVENT_DISPATCH,
+            array($this, 'postProcess'),
+            -100
+        );
+
+        $sharedEvents->attach(
+            'Main\Controller\InfoController',
+            MvcEvent::EVENT_DISPATCH,
+            array($e->getApplication()->getServiceManager()->get('Main\Http\Restful'), 'onDispatch'),
+            100
+        );
+
+        $sharedEvents->attach(
+            'Zend\Mvc\Application',
+            MvcEvent::EVENT_DISPATCH_ERROR,
+            array($this, 'errorProcess'),
+            999
+        );
     }
 
     /**
