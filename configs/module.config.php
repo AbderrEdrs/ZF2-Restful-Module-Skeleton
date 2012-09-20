@@ -1,7 +1,7 @@
 <?php
 return array(
     'errors' => array(
-        'post_processor' => 'xml-pp',
+        'post_processor' => 'json-pp',
         'show_exceptions' => array(
         	'message' => true,
         	'trace'   => true
@@ -11,8 +11,7 @@ return array(
         'instance' => array(
         	'alias' => array(
         		'json-pp'  => 'Main\PostProcessor\Json',
-        		'image-pp' => 'Main\PostProcessor\Image',
-        		'xml-pp' => 'Main\PostProcessor\Xml',
+        		'image-pp' => 'Main\PostProcessor\Image'
         	)
         )
     ),
