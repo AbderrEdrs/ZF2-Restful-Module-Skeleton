@@ -10,8 +10,9 @@ return array(
     'di' => array(
         'instance' => array(
         	'alias' => array(
-        		'json-pp'  => 'Main\PostProcessor\Json',
-        		'image-pp' => 'Main\PostProcessor\Image'
+        		'json-pp'   => 'Main\PostProcessor\Json',
+        		'jsonp-pp'  => 'Main\PostProcessor\Jsonp',
+        		'image-pp'  => 'Main\PostProcessor\Image'
         	)
         )
     ),

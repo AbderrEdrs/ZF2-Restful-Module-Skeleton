@@ -10,9 +10,9 @@ class Json extends AbstractPostProcessor
 	public function process()
 	{
         $result = json_encode($this->_vars);
-		$this->_response->setContent($result);
-		$headers = $this->_response->getHeaders();
+		$this->getResponse()->setContent($result);
+		$headers = $this->getResponse()->getHeaders();
 		$headers->addHeaderLine('Content-Type', 'application/json');
-		$this->_response->setHeaders($headers);
+		$this->getResponse()->setHeaders($headers);
 	}
 }

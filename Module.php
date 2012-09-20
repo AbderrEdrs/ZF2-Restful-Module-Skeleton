@@ -3,7 +3,7 @@
 namespace Main;
 
 use Zend\Mvc\MvcEvent;
-use Album\Model\AlbumTable;
+
 /**
  *
  */
@@ -91,6 +91,7 @@ class Module
 
             /** @var PostProcessor\AbstractPostProcessor $postProcessor */
             $postProcessor = $di->get($formatter . '-pp', array(
+                    'request' => $e->getRequest(),
                     'response' => $e->getResponse(),
                     'vars' => $vars,
             ));
@@ -106,6 +107,8 @@ class Module
     /**
      * @param MvcEvent $e
      * @return null|\Zend\Http\PhpEnvironment\Response
+     *
+     * @todo Use the actual processor...
      */
     public function errorProcess(MvcEvent $e)
     {
@@ -158,14 +161,6 @@ class Module
 
     public function getServiceConfig()
     {
-        return array(
-                'factories' => array(
-                        'albumTable' =>  function($sm) {
-                        $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
-                        $table     = new AlbumTable($dbAdapter);
-                        return $table;
-        },
-        ),
-        );
+        return array();
     }
 }
