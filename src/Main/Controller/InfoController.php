@@ -27,7 +27,7 @@ class InfoController extends AbstractRestfulController
 
     public function getList()
     {
-        return array('ciao' => 'mondo-updated');
+        return array('ciao' => 'mondo');
     }
 
     /**
